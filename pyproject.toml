@@ -1,0 +1,6 @@
+[tool.pytest.ini_options]
+addopts = "--basetemp=.pytest-tmp"
+cache_dir = ".cache/pytest"
+testpaths = ["tests"]
+asyncio_mode = "auto"
+pythonpath = ["."]

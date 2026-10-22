@@ -1,0 +1,24 @@
+[Unit]
+Description=NetPulse - monitoramento de qualidade da internet
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=netpulse
+Group=netpulse
+WorkingDirectory=/opt/netpulse
+EnvironmentFile=-/opt/netpulse/.env
+ExecStart=/opt/netpulse/.venv/bin/python -m backend.main
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+KillSignal=SIGTERM
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/netpulse/data
+
+[Install]
+WantedBy=multi-user.target
